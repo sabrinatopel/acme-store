@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.util.List;
 
+
 import br.com.acme.application.ports.out.ICreateCardDomainRepository;
 import br.com.acme.application.ports.out.IDeleteCardDomainByIdRepository;
 import br.com.acme.application.ports.out.IGetCardDomainByIdRepository;
