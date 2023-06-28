@@ -37,14 +37,14 @@ interessados.
 ## Atualização - Sabrina - 28/06/2023
 
 * Client Service
-   *Adicionei:
+   * Adicionei:
       * PUT - Put(id)
    * Renomei alguns arquivos no Client Service
    * Mudei algumas config no pom.xml de h2 para mysql (mudança temporário)
    * Mudei algumas config no application.yml de h2 para mysql (mudança temporário)
 
 * Card Service
-   *Adicionei:
+   * Adicionei:
       * POST
       * GET - GetById e Get(all)
       * DELETE
