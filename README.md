@@ -36,12 +36,14 @@ interessados.
 
 ## Atualização - Sabrina - 28/06/2023
 
-* Implementei algumas funções em Card Service e Cliente Service
+* Implementei algumas funções em Card Service e Client Service
 * Card Service
    * POST
    * GET - GetById e Get(all)
    * DELETE
    * PUT - Put(id)
 
-* Cliente Service
+* Client Service
    * PUT - Put(id)
+
+* Também renomei alguns arquivos no Client Service
