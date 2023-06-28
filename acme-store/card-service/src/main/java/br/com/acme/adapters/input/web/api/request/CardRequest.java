@@ -9,7 +9,6 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class CardRequest {
-    private Long id;
     private String flag;
     private String number;
     private BigDecimal card_limit;

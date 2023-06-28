@@ -10,6 +10,7 @@ import br.com.acme.application.ports.in.ICreateClientDomainUseCase;
 import br.com.acme.application.ports.in.IDeleteClientDomainByIdUseCase;
 import br.com.acme.application.ports.in.IGetClientDomainGetByIdUseCase;
 import br.com.acme.application.ports.in.IListClientDomainUseCase;
+import br.com.acme.application.ports.in.IPutClientDomainUseCase;
 import lombok.AllArgsConstructor;
 import org.junit.platform.commons.function.Try;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,7 @@ public class ClientController implements ClientApi {
     private final IListClientDomainUseCase iListClientDomainUseCase;
     private final IGetClientDomainGetByIdUseCase iGetClientDomainGetByIdUseCase;
     private final IDeleteClientDomainByIdUseCase iDeleteClientDomainByIdUseCase;
+    private final IPutClientDomainUseCase iPutClientDomainUseCase ;
 
     private final ConverterDTO converterDTO;
     @Override
@@ -56,5 +58,19 @@ public class ClientController implements ClientApi {
     public ResponseEntity<?> delete(Long id) {
         this.iDeleteClientDomainByIdUseCase.execute(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @Override
+    public ResponseEntity<ClientResponse> update(Long id, ClientRequest clientRequest) {
+            try{
+            get(id);
+            
+            var domain = (ClientDomain) converterDTO.convertObject(clientRequest, ClientDomain.class);
+            domain.setId(id);
+            var response = this.iPutClientDomainUseCase.execute(domain);
+            return ResponseEntity.ok((ClientResponse) converterDTO.convertObject(response, ClientResponse.class));
+            }catch(ClientNotFoundException e){
+                throw new ClientNotFoundException(id);
+            }
     }
 }

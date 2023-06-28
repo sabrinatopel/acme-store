@@ -29,4 +29,9 @@ public interface ClientApi {
     ResponseEntity<?> delete(@PathVariable("id") Long id);
 
 
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    ResponseEntity<ClientResponse> update(@PathVariable("id") Long id, @RequestBody ClientRequest clientRequest);
+
+
 }
