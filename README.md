@@ -46,4 +46,5 @@ interessados.
 * Client Service
    * PUT - Put(id)
 
-* Também renomei alguns arquivos no Client Service
+* Renomei alguns arquivos no Client Service
+* E mudei algumas config no pom.xml de h2 para mysql (mudança temporário)
