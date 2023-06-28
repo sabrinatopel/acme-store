@@ -1,7 +1,7 @@
 package br.com.acme.adapters.input.web.controller;
 
 import br.com.acme.adapters.input.web.api.ClientApi;
-import br.com.acme.adapters.input.web.api.exception.errors.ClientNotFundException;
+import br.com.acme.adapters.input.web.api.exception.errors.ClientNotFoundException;
 import br.com.acme.adapters.input.web.api.request.ClientRequest;
 import br.com.acme.adapters.input.web.api.response.ClientResponse;
 import br.com.acme.application.domain.entity.ClientDomain;
@@ -47,8 +47,8 @@ public class ClientController implements ClientApi {
             var domain = (ClientDomain) this.iGetClientDomainGetByIdUseCase.execute(id);
             return ResponseEntity.ok((ClientResponse) converterDTO
                     .convertObject(domain, ClientResponse.class));
-        }catch (ClientNotFundException e) {
-            throw new ClientNotFundException(id);
+        }catch (ClientNotFoundException e) {
+            throw new ClientNotFoundException(id);
         }
     }
 

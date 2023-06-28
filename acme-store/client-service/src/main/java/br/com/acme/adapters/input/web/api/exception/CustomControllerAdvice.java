@@ -1,7 +1,7 @@
 package br.com.acme.adapters.input.web.api.exception;
 
 import br.com.acme.adapters.input.web.api.exception.errors.ApiErrorsResponse;
-import br.com.acme.adapters.input.web.api.exception.errors.ClientNotFundException;
+import br.com.acme.adapters.input.web.api.exception.errors.ClientNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,9 +13,9 @@ import java.time.LocalDateTime;
 @ControllerAdvice
 public class CustomControllerAdvice {
 
-    @ExceptionHandler(ClientNotFundException.class)
+    @ExceptionHandler(ClientNotFoundException.class)
     public ResponseEntity<ApiErrorsResponse> handleClientNotFundException(
-            ClientNotFundException exception, WebRequest webRequest
+            ClientNotFoundException exception, WebRequest webRequest
     ) {
         var dataError = ApiErrorsResponse.DataMessageError
                 .builder()
