@@ -1,5 +1,7 @@
 package br.com.acme.adapters.output.database.mysql.entity;
 
+
+
 import java.math.BigDecimal;
 
 import jakarta.persistence.*;
