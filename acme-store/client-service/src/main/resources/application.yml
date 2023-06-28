@@ -1,11 +1,13 @@
 server:
-  port: 8081
+  port: 8080
 
 spring:
   datasource:
-    url: jdbc:h2:mem:clients
-    username: sa
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/acme_store
+    username: root
     password:
-    driverClassName: org.h2.Driver
   jpa:
-    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
