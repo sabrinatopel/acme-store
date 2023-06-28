@@ -1,7 +1,7 @@
 package br.com.acme.application.domain.entity;
 
 import br.com.acme.application.domain.vo.Phone;
-import br.com.acme.application.ports.out.ICreateClientRepository;
+import br.com.acme.application.ports.out.ICreateClientDomainRepository;
 import br.com.acme.application.ports.out.IDeleteClientDomainByIdRepository;
 import br.com.acme.application.ports.out.IGetClientDomainGetByIdRepository;
 import br.com.acme.application.ports.out.IListClientDomainRepository;
@@ -24,8 +24,8 @@ public class ClientDomain {
     private String document;
     private String phone;
 
-    public ClientDomain save(ICreateClientRepository iCreateClientRepository){
-        return iCreateClientRepository.execute(this);
+    public ClientDomain save(ICreateClientDomainRepository iCreateClientDomainRepository){
+        return iCreateClientDomainRepository.execute(this);
     }
 
     public List<ClientDomain> list(IListClientDomainRepository iListClientDomainRepository){
