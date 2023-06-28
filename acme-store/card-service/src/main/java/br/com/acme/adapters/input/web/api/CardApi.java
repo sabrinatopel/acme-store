@@ -14,4 +14,7 @@ public interface CardApi {
     @ResponseStatus(HttpStatus.CREATED)
     ResponseEntity<CardResponse> create(@RequestBody CardRequest cardRequest);
     
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    ResponseEntity<CardResponse> get(@PathVariable("id") Long id);
 }
