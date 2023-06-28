@@ -36,15 +36,19 @@ interessados.
 
 ## Atualização - Sabrina - 28/06/2023
 
-* Implementei algumas funções em Card Service e Client Service
-* Card Service
-   * POST
-   * GET - GetById e Get(all)
-   * DELETE
-   * PUT - Put(id)
-
 * Client Service
-   * PUT - Put(id)
+   *Adicionei:
+      * PUT - Put(id)
+   * Renomei alguns arquivos no Client Service
+   * Mudei algumas config no pom.xml de h2 para mysql (mudança temporário)
+   * Mudei algumas config no application.yml de h2 para mysql (mudança temporário)
 
-* Renomei alguns arquivos no Client Service
-* E mudei algumas config no pom.xml de h2 para mysql (mudança temporário)
+* Card Service
+   *Adicionei:
+      * POST
+      * GET - GetById e Get(all)
+      * DELETE
+      * PUT - Put(id)
+   * Renomei alguns arquivos no Client Service
+   * Mudei algumas config no pom.xml de h2 para mysql (mudança temporário)
+   * Mudei algumas config no application.yml de h2 para mysql (mudança temporário)
