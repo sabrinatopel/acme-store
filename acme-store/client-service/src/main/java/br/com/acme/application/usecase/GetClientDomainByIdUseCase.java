@@ -1,16 +1,16 @@
 package br.com.acme.application.usecase;
 
 import br.com.acme.application.domain.entity.ClientDomain;
-import br.com.acme.application.ports.in.IGetClientDomainGetByIdUseCase;
-import br.com.acme.application.ports.out.IGetClientDomainGetByIdRepository;
+import br.com.acme.application.ports.in.IGetClientDomainByIdUseCase;
+import br.com.acme.application.ports.out.IGetClientDomainByIdRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class GetClientDomainGetByIdUseCase implements IGetClientDomainGetByIdUseCase {
+public class GetClientDomainByIdUseCase implements IGetClientDomainByIdUseCase {
 
-    private final IGetClientDomainGetByIdRepository iGetClientDomainGetByIdRepository;
+    private final IGetClientDomainByIdRepository iGetClientDomainGetByIdRepository;
     @Override
     public ClientDomain execute(Long id) {
         return ClientDomain.builder()

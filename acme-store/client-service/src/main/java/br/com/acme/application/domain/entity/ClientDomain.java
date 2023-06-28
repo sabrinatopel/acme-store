@@ -1,5 +1,6 @@
 package br.com.acme.application.domain.entity;
 
+import br.com.acme.adapters.output.database.mysql.entity.Card;
 import br.com.acme.application.domain.vo.Phone;
 import br.com.acme.application.ports.out.ICreateClientDomainRepository;
 import br.com.acme.application.ports.out.IDeleteClientDomainByIdRepository;

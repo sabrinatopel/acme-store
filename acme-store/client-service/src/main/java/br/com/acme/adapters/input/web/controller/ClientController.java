@@ -8,7 +8,7 @@ import br.com.acme.application.domain.entity.ClientDomain;
 import br.com.acme.application.mapper.ConverterDTO;
 import br.com.acme.application.ports.in.ICreateClientDomainUseCase;
 import br.com.acme.application.ports.in.IDeleteClientDomainByIdUseCase;
-import br.com.acme.application.ports.in.IGetClientDomainGetByIdUseCase;
+import br.com.acme.application.ports.in.IGetClientDomainByIdUseCase;
 import br.com.acme.application.ports.in.IListClientDomainUseCase;
 import br.com.acme.application.ports.in.IPutClientDomainUseCase;
 import lombok.AllArgsConstructor;
@@ -24,7 +24,7 @@ import java.util.List;
 public class ClientController implements ClientApi {
     private final ICreateClientDomainUseCase iCreateClientDomainUseCase;
     private final IListClientDomainUseCase iListClientDomainUseCase;
-    private final IGetClientDomainGetByIdUseCase iGetClientDomainGetByIdUseCase;
+    private final IGetClientDomainByIdUseCase iGetClientDomainGetByIdUseCase;
     private final IDeleteClientDomainByIdUseCase iDeleteClientDomainByIdUseCase;
     private final IPutClientDomainUseCase iPutClientDomainUseCase ;
 
