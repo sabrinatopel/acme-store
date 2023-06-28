@@ -12,6 +12,7 @@ import br.com.acme.application.ports.out.ICreateCardDomainRepository;
 import br.com.acme.application.ports.out.IDeleteCardDomainByIdRepository;
 import br.com.acme.application.ports.out.IGetCardDomainByIdRepository;
 import br.com.acme.application.ports.out.IListCardDomainRepository;
+import br.com.acme.application.ports.out.IPutCardDomainRepository;
 
 @Data
 @AllArgsConstructor
@@ -37,5 +38,9 @@ public class CardDomain {
 
     public List<CardDomain> list(IListCardDomainRepository IListCardDomainRepository){
         return IListCardDomainRepository.execute();
+    }
+
+    public CardDomain update(IPutCardDomainRepository iPutCardDomainRepository){
+        return iPutCardDomainRepository.execute(this);
     }
 }

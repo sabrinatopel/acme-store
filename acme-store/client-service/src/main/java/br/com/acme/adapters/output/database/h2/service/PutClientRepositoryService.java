@@ -13,13 +13,13 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class PutClientRepositoryService implements IPutClientDomainRepository {
-    
+
     private final ClientRepository clientRepository;
     private final ConverterDTO converterDTO;
 
     @Override
-    public ClientDomain execute(ClientDomain clientDomain){
-    var entity = (Client) converterDTO.convertObject(clientDomain, Client.class);
+    public ClientDomain execute(ClientDomain clientDomain) {
+        var entity = (Client) converterDTO.convertObject(clientDomain, Client.class);
         var domain = (ClientDomain) converterDTO.convertObject(this.clientRepository.save(entity), ClientDomain.class);
 
         return domain;

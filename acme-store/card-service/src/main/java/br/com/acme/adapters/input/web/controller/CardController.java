@@ -20,7 +20,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
-public class CardController implements CardApi{
+public class CardController implements CardApi {
     private final ICreateCardDomainUseCase iCreateCardDomainUseCase;
     private final IGetCardDomainByIdUseCase iGetCardDomainByIdUseCase;
     private final IDeleteCardDomainByIdUseCase iDeleteCardDomainByIdUseCase;
@@ -29,33 +29,44 @@ public class CardController implements CardApi{
     private final ConverterDTO converterDTO;
 
     @Override
-    public ResponseEntity<CardResponse> create(CardRequest cardRequest){
+    public ResponseEntity<CardResponse> create(CardRequest cardRequest) {
         var domain = (CardDomain) converterDTO.convertObject(cardRequest, CardDomain.class);
         var response = this.iCreateCardDomainUseCase.execute(domain);
         return ResponseEntity.ok((CardResponse) converterDTO.convertObject(response, CardResponse.class));
     }
 
-   @Override
-    public ResponseEntity<CardResponse> get(Long id){
+    @Override
+    public ResponseEntity<CardResponse> get(Long id) {
         try {
             var domain = (CardDomain) this.iGetCardDomainByIdUseCase.execute(id);
             return ResponseEntity.ok((CardResponse) converterDTO
                     .convertObject(domain, CardResponse.class));
-        }catch (CardNotFoundException e) {
+        } catch (CardNotFoundException e) {
             throw new CardNotFoundException(id);
         }
     }
 
     @Override
-    public ResponseEntity<?> deleteById(Long id){
+    public ResponseEntity<?> deleteById(Long id) {
         this.iDeleteCardDomainByIdUseCase.execute(id);
         return ResponseEntity.noContent().build();
     }
 
-
+    @Override
+    public ResponseEntity<CardResponse> update(Long id, CardRequest cardRequest) {
+        try {
+            get(id);
+            var domain = (CardDomain) converterDTO.convertObject(cardRequest, CardDomain.class);
+            domain.setId(id);
+            var response = this.iCreateCardDomainUseCase.execute(domain);
+            return ResponseEntity.ok((CardResponse) converterDTO.convertObject(response, CardResponse.class));
+        } catch (CardNotFoundException e) {
+            throw new CardNotFoundException(id);
+        }
+    }
 
     @Override
-    public ResponseEntity<List<CardResponse>> list(){
+    public ResponseEntity<List<CardResponse>> list() {
         var list = converterDTO.convertListObjects(this.iListCardDomainUseCase.execute(), CardResponse.class);
         return ResponseEntity.ok(list);
     }
