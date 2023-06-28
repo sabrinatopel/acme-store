@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 public class DeleteCardByIdRepositoryService implements IDeleteCardDomainByIdRepository {
     
     private final CardRepository cardRepository;
+    
     @Override
     public void execute(Long id){
         this.cardRepository.deleteById(id);

@@ -1,5 +1,7 @@
 package br.com.acme.adapters.input.web.api;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,4 +23,8 @@ public interface CardApi {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity<?> deleteById(@PathVariable("id") Long id);
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    ResponseEntity<List<CardResponse>> list();
 }

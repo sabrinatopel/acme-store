@@ -1,5 +1,8 @@
 package br.com.acme.adapters.input.web.controller;
 
+import java.util.List;
+
+import org.apache.catalina.connector.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,6 +15,7 @@ import br.com.acme.application.mapper.ConverterDTO;
 import br.com.acme.application.ports.in.ICreateCardDomainUseCase;
 import br.com.acme.application.ports.in.IDeleteCardDomainByIdUseCase;
 import br.com.acme.application.ports.in.IGetCardDomainByIdUseCase;
+import br.com.acme.application.ports.in.IListCardDomainUseCase;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -20,6 +24,7 @@ public class CardController implements CardApi{
     private final ICreateCardDomainUseCase iCreateCardDomainUseCase;
     private final IGetCardDomainByIdUseCase iGetCardDomainByIdUseCase;
     private final IDeleteCardDomainByIdUseCase iDeleteCardDomainByIdUseCase;
+    private final IListCardDomainUseCase iListCardDomainUseCase;
 
     private final ConverterDTO converterDTO;
 
@@ -45,6 +50,14 @@ public class CardController implements CardApi{
     public ResponseEntity<?> deleteById(Long id){
         this.iDeleteCardDomainByIdUseCase.execute(id);
         return ResponseEntity.noContent().build();
+    }
+
+
+
+    @Override
+    public ResponseEntity<List<CardResponse>> list(){
+        var list = converterDTO.convertListObjects(this.iListCardDomainUseCase.execute(), CardResponse.class);
+        return ResponseEntity.ok(list);
     }
 
 }
