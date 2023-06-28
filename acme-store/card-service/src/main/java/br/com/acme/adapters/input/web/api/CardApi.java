@@ -17,4 +17,8 @@ public interface CardApi {
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity<CardResponse> get(@PathVariable("id") Long id);
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    ResponseEntity<?> deleteById(@PathVariable("id") Long id);
 }

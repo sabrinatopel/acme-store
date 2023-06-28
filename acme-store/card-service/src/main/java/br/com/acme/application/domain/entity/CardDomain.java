@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
 import br.com.acme.application.ports.out.ICreateCardDomainRepository;
+import br.com.acme.application.ports.out.IDeleteCardDomainByIdRepository;
 import br.com.acme.application.ports.out.IGetCardDomainByIdRepository;
 
 @Data
@@ -26,5 +27,9 @@ public class CardDomain {
 
     public CardDomain getById(IGetCardDomainByIdRepository iGetCardDomainByIdRepository){
         return iGetCardDomainByIdRepository.execute(this.id);
+    }
+
+    public void deleteById(IDeleteCardDomainByIdRepository iDeleteCardDomainByIdRepository){
+        iDeleteCardDomainByIdRepository.execute(this.id);
     }
 }

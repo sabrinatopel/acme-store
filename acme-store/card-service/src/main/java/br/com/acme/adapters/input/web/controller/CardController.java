@@ -10,6 +10,7 @@ import br.com.acme.adapters.input.web.api.response.CardResponse;
 import br.com.acme.application.domain.entity.CardDomain;
 import br.com.acme.application.mapper.ConverterDTO;
 import br.com.acme.application.ports.in.ICreateCardDomainUseCase;
+import br.com.acme.application.ports.in.IDeleteCardDomainByIdUseCase;
 import br.com.acme.application.ports.in.IGetCardDomainByIdUseCase;
 import lombok.AllArgsConstructor;
 
@@ -18,6 +19,7 @@ import lombok.AllArgsConstructor;
 public class CardController implements CardApi{
     private final ICreateCardDomainUseCase iCreateCardDomainUseCase;
     private final IGetCardDomainByIdUseCase iGetCardDomainByIdUseCase;
+    private final IDeleteCardDomainByIdUseCase iDeleteCardDomainByIdUseCase;
 
     private final ConverterDTO converterDTO;
 
@@ -37,6 +39,12 @@ public class CardController implements CardApi{
         }catch (CardNotFoundException e) {
             throw new CardNotFoundException(id);
         }
+    }
+
+    @Override
+    public ResponseEntity<?> deleteById(Long id){
+        this.iDeleteCardDomainByIdUseCase.execute(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
