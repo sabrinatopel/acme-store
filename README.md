@@ -40,8 +40,6 @@ interessados.
    * Adicionei:
       * PUT - Put(id)
    * Renomei alguns arquivos no Client Service
-   * Mudei algumas config no pom.xml de h2 para mysql (mudança temporário)
-   * Mudei algumas config no application.yml de h2 para mysql (mudança temporário)
 
 * Card Service
    * Adicionei:
@@ -50,5 +48,3 @@ interessados.
       * DELETE
       * PUT - Put(id)
    * Renomei alguns arquivos no Client Service
-   * Mudei algumas config no pom.xml de h2 para mysql (mudança temporário)
-   * Mudei algumas config no application.yml de h2 para mysql (mudança temporário)
