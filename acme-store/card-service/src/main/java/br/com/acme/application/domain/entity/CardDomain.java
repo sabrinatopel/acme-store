@@ -1,10 +1,6 @@
 package br.com.acme.application.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import lombok.*;
 import java.math.BigDecimal;
 import java.util.List;
 import br.com.acme.application.ports.out.*;
