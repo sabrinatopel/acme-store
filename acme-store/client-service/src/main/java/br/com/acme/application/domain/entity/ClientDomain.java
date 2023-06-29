@@ -1,16 +1,6 @@
 package br.com.acme.application.domain.entity;
-
-import br.com.acme.adapters.output.database.mysql.entity.Card;
-import br.com.acme.application.domain.vo.Phone;
-import br.com.acme.application.ports.out.ICreateClientDomainRepository;
-import br.com.acme.application.ports.out.IDeleteClientDomainByIdRepository;
-import br.com.acme.application.ports.out.IGetClientDomainByIdRepository;
-import br.com.acme.application.ports.out.IListClientDomainRepository;
-import br.com.acme.application.ports.out.IPutClientDomainRepository;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import br.com.acme.application.ports.out.*;
+import lombok.*;
 
 import java.util.List;
 
