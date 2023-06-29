@@ -47,4 +47,4 @@ interessados.
       * GET - GetById e Get(all)
       * DELETE
       * PUT - Put(id)
-   * Renomei alguns arquivos no Client Service
+   * Renomei alguns arquivos no Card Service
