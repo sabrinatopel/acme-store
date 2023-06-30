@@ -1,8 +1,8 @@
-package br.com.acme.adapters.output.database.mysql.service;
+package br.com.acme.adapters.output.database.h2.service;
 
 import org.springframework.stereotype.Service;
 
-import br.com.acme.adapters.output.database.mysql.repository.CardRepository;
+import br.com.acme.adapters.output.database.h2.repository.CardRepository;
 import br.com.acme.application.ports.out.IDeleteCardDomainByIdRepository;
 import lombok.AllArgsConstructor;
 

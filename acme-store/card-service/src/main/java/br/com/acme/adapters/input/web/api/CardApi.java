@@ -30,5 +30,5 @@ public interface CardApi {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    ResponseEntity<CardResponse> update(@PathVariable("id") Long id,@RequestBody CardRequest cardRequest);
+    ResponseEntity<CardResponse> update(@PathVariable("id") Long id, @RequestBody CardRequest cardRequest);
 }

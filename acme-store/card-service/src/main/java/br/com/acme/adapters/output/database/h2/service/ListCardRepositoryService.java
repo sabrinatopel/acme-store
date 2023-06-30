@@ -1,10 +1,10 @@
-package br.com.acme.adapters.output.database.mysql.service;
+package br.com.acme.adapters.output.database.h2.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import br.com.acme.adapters.output.database.mysql.repository.CardRepository;
+import br.com.acme.adapters.output.database.h2.repository.CardRepository;
 import br.com.acme.application.domain.entity.CardDomain;
 import br.com.acme.application.mapper.ConverterDTO;
 import br.com.acme.application.ports.out.IListCardDomainRepository;

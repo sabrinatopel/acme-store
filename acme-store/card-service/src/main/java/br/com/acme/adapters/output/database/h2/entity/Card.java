@@ -1,4 +1,4 @@
-package br.com.acme.adapters.output.database.mysql.entity;
+package br.com.acme.adapters.output.database.h2.entity;
 
 import java.math.BigDecimal;
 
