@@ -2,6 +2,8 @@ package br.com.acme.adapters.input.web.api.request;
 
 import lombok.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -11,5 +13,6 @@ public class ClientRequest {
     private String email;
     private String document;
     private String phone;
+    private List<CardRequest> cards;
     
 }

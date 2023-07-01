@@ -54,8 +54,7 @@ public class CardController implements CardApi {
     public ResponseEntity<CardResponse> update(Long id, CardRequest cardRequest) {
         try {
             var domain = (CardDomain) converterDTO.convertObject(cardRequest, CardDomain.class);
-            domain.setId(id);
-            var response = this.iPutCardDomainUseCase.execute(domain);
+            var response = this.iPutCardDomainUseCase.execute(id, domain);
             return ResponseEntity.ok((CardResponse) converterDTO.convertObject(response, CardResponse.class));
         } catch (CardNotFoundException e) {
             throw new CardNotFoundException(id);

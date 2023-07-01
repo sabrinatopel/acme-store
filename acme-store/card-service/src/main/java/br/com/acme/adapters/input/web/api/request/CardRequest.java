@@ -1,6 +1,7 @@
 package br.com.acme.adapters.input.web.api.request;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import lombok.*;
 

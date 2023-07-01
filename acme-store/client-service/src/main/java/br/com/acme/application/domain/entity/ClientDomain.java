@@ -14,6 +14,7 @@ public class ClientDomain {
     private String email;
     private String document;
     private String phone;
+    private List<CardDomain> cards;
 
     public ClientDomain save(ICreateClientDomainRepository iCreateClientDomainRepository){
         return iCreateClientDomainRepository.execute(this);

@@ -13,7 +13,8 @@ public class PutCardDomainUseCase implements IPutCardDomainUseCase {
     private final IPutCardDomainRepository iPutCardDomainRepository;
 
     @Override
-    public CardDomain execute(CardDomain cardDomain){
+    public CardDomain execute(Long id,CardDomain cardDomain){
+
         return cardDomain.update(iPutCardDomainRepository);
     }
 }

@@ -4,6 +4,6 @@ import br.com.acme.application.domain.entity.CardDomain;
 
 public interface IPutCardDomainRepository {
 
-    CardDomain execute(CardDomain cardDomain);
+    CardDomain execute(Long id,CardDomain cardDomain);
     
 }
