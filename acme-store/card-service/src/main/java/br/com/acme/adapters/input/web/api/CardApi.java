@@ -1,5 +1,6 @@
 package br.com.acme.adapters.input.web.api;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -27,6 +28,10 @@ public interface CardApi {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity<List<CardResponse>> list();
+
+    @GetMapping("/income/{income}")
+    @ResponseStatus(HttpStatus.OK)
+    ResponseEntity<List<CardResponse>> listIncomeLessThanEqual(@PathVariable("income")BigDecimal income);
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)

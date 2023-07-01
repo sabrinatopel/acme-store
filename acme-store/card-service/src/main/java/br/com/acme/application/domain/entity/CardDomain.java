@@ -35,4 +35,8 @@ public class CardDomain {
     public CardDomain update(Long id,IPutCardDomainRepository iPutCardDomainRepository){
         return iPutCardDomainRepository.execute(id, this);
     }
+
+    public List<CardDomain> listIncomeLessThanEqual(IListCardDomainIncomeLessThanEqualRepository iListCardDomainIncomeLessThanEqualRepository) {
+    return iListCardDomainIncomeLessThanEqualRepository.execute(this.income);
+    }
 }

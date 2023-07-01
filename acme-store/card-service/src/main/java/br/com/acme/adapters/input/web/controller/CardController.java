@@ -1,9 +1,10 @@
 package br.com.acme.adapters.input.web.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
+import br.com.acme.adapters.output.database.h2.service.IListCardIncomeLessThanEqualUseCase;
 import br.com.acme.application.ports.in.*;
-import org.apache.catalina.connector.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +24,7 @@ public class CardController implements CardApi {
     private final IGetCardDomainByIdUseCase iGetCardDomainByIdUseCase;
     private final IDeleteCardDomainByIdUseCase iDeleteCardDomainByIdUseCase;
     private final IListCardDomainUseCase iListCardDomainUseCase;
-
+    private final IListCardIncomeLessThanEqualUseCase iListCardDomainIncomeLessThanEqualUseCase;
     private final ConverterDTO converterDTO;
 
     @Override
@@ -64,6 +65,12 @@ public class CardController implements CardApi {
     @Override
     public ResponseEntity<List<CardResponse>> list() {
         var list = converterDTO.convertListObjects(this.iListCardDomainUseCase.execute(), CardResponse.class);
+        return ResponseEntity.ok(list);
+    }
+
+    @Override
+    public ResponseEntity<List<CardResponse>> listIncomeLessThanEqual(BigDecimal income) {
+        var list = converterDTO.convertListObjects(this.iListCardDomainIncomeLessThanEqualUseCase.execute(income), CardResponse.class);
         return ResponseEntity.ok(list);
     }
 
