@@ -64,7 +64,6 @@ public class ClientController implements ClientApi {
     public ResponseEntity<ClientResponse> update(Long id, ClientRequest clientRequest) {
             try{
             get(id);
-            
             var domain = (ClientDomain) converterDTO.convertObject(clientRequest, ClientDomain.class);
             domain.setId(id);
             var response = this.iPutClientDomainUseCase.execute(domain);

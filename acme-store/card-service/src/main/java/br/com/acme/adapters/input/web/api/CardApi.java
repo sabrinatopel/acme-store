@@ -29,6 +29,6 @@ public interface CardApi {
     ResponseEntity<List<CardResponse>> list();
 
     @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     ResponseEntity<CardResponse> update(@PathVariable("id") Long id, @RequestBody CardRequest cardRequest);
 }

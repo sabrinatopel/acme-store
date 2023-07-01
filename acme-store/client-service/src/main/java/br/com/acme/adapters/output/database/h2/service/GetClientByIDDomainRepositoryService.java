@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class GetClientByIdDomainRepositoryService implements IGetClientDomainByIdRepository {
+public class GetClientByIDDomainRepositoryService implements IGetClientDomainByIdRepository {
 
     private final ClientRepository clientRepository;
     private final ConverterDTO converterDTO;

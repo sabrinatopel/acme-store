@@ -20,10 +20,10 @@ public class CustomControllerAdvice {
     ) {
         var dataError = ApiErrorsResponse.DataMessageError
                 .builder()
-                .description("client not found")
+                .description("card not found")
                 .dateTime(LocalDateTime.now())
                 .statusCode(HttpStatus.NOT_FOUND.value())
-                .message("Client search not found")
+                .message("Card search not found")
                 .build();
 
         var apiError = ApiErrorsResponse.builder()
