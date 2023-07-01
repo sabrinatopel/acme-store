@@ -64,8 +64,8 @@ public class ClientController implements ClientApi {
     public ResponseEntity<ClientResponse> update(Long id, ClientRequest clientRequest) {
             try{
             var domain = (ClientDomain) converterDTO.convertObject(clientRequest, ClientDomain.class);
-            domain.setId(id);
-            var response = this.iPutClientDomainUseCase.execute(domain);
+           // domain.setId(id);
+            var response = this.iPutClientDomainUseCase.execute(id, domain);
             return ResponseEntity.ok((ClientResponse) converterDTO.convertObject(response, ClientResponse.class));
             }catch(ClientNotFoundException e){
                 throw new ClientNotFoundException(id);

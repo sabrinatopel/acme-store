@@ -18,7 +18,11 @@ public class PutClientRepositoryService implements IPutClientDomainRepository {
     private final ConverterDTO converterDTO;
 
     @Override
-    public ClientDomain execute(ClientDomain clientDomain) {
+    public ClientDomain execute(Long id, ClientDomain clientDomain) {
+        if (this.clientRepository.findById(id).isEmpty()) {
+            throw new ClientNotFoundException(id);
+        }
+        clientDomain.setId(id);
         var entity = (Client) converterDTO.convertObject(clientDomain, Client.class);
         var domain = (ClientDomain) converterDTO.convertObject(this.clientRepository.save(entity), ClientDomain.class);
         return domain;

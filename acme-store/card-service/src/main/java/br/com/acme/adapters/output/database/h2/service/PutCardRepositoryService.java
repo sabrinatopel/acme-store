@@ -1,5 +1,6 @@
 package br.com.acme.adapters.output.database.h2.service;
 
+import br.com.acme.adapters.input.web.api.exception.errors.CardNotFoundException;
 import org.springframework.stereotype.Service;
 
 import br.com.acme.adapters.output.database.h2.entity.Card;
@@ -16,7 +17,11 @@ public class PutCardRepositoryService implements IPutCardDomainRepository {
     private final ConverterDTO converterDTO;
 
     @Override
-    public CardDomain execute(CardDomain cardDomain) {
+    public CardDomain execute(Long id,CardDomain cardDomain) {
+        if (this.cardRepository.findById(id).isEmpty()) {
+            throw new CardNotFoundException(id);
+        }
+        cardDomain.setId(id);
         var entity = (Card) converterDTO.convertObject(cardDomain, Card.class);
         var domain = (CardDomain) converterDTO.convertObject(this.cardRepository.save(entity), CardDomain.class);
         return domain;

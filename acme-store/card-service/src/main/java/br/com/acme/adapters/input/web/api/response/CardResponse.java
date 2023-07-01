@@ -12,6 +12,7 @@ public class CardResponse {
     private Long id;
     private String flag;
     private String number;
+    private BigDecimal income;
     private BigDecimal card_limit;
 
     

@@ -4,6 +4,6 @@ import br.com.acme.application.domain.entity.ClientDomain;
 
 public interface IPutClientDomainUseCase {
 
-    ClientDomain execute(ClientDomain cardDomain);
+    ClientDomain execute(Long id, ClientDomain cardDomain);
     
 }

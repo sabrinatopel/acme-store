@@ -13,6 +13,7 @@ public class CardDomain {
     private Long id;
     private String flag;
     private String number;
+    private BigDecimal income;
     private BigDecimal card_limit;
 
     public CardDomain save(ICreateCardDomainRepository iCreateCardDomainRepository){
@@ -31,7 +32,7 @@ public class CardDomain {
         return IListCardDomainRepository.execute();
     }
 
-    public CardDomain update(IPutCardDomainRepository iPutCardDomainRepository){
-        return iPutCardDomainRepository.execute(this);
+    public CardDomain update(Long id,IPutCardDomainRepository iPutCardDomainRepository){
+        return iPutCardDomainRepository.execute(id, this);
     }
 }

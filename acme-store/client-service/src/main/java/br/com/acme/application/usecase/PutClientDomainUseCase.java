@@ -1,5 +1,6 @@
 package br.com.acme.application.usecase;
 
+import br.com.acme.application.ports.out.IGetClientDomainByIdRepository;
 import org.springframework.stereotype.Service;
 
 import br.com.acme.application.domain.entity.ClientDomain;
@@ -14,8 +15,8 @@ public class PutClientDomainUseCase implements IPutClientDomainUseCase {
     private final IPutClientDomainRepository iPutClientDomainRepository;
 
     @Override
-    public ClientDomain execute(ClientDomain clientDomain){
-        return clientDomain.update(iPutClientDomainRepository);
+    public ClientDomain execute(Long id, ClientDomain clientDomain){
+        return clientDomain.update(id, iPutClientDomainRepository);
     }
 
 }

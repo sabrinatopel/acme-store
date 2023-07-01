@@ -12,6 +12,7 @@ import lombok.*;
 public class CardRequest {
     private String flag;
     private String number;
+    private BigDecimal income;
     private BigDecimal card_limit;
 
     
