@@ -41,5 +41,10 @@ public class ClientDomain {
     public List<CardDomain> getCards(IGetClientCardsDomainRepository iGetClientDomainByIdRepository) {
         return iGetClientDomainByIdRepository.execute(this.id);
     }
+    
+
+    public List<CardDomain> createClientCard(ICreateClientCardDomainRepository ICreateClientCardDomainRepository){
+        return ICreateClientCardDomainRepository.execute(this.id, this.cards.get(0));
+    }
 
 }

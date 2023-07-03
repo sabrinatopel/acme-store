@@ -1,5 +1,6 @@
 package br.com.acme.adapters.input.web.api;
 
+import br.com.acme.adapters.input.web.api.request.CardRequest;
 import br.com.acme.adapters.input.web.api.request.ClientRequest;
 import br.com.acme.adapters.input.web.api.response.CardResponse;
 import br.com.acme.adapters.input.web.api.response.ClientResponse;
@@ -36,5 +37,9 @@ public interface ClientApi {
 
     @GetMapping("/{id}/cards")
     @ResponseStatus(HttpStatus.OK)
-     ResponseEntity<List<CardResponse>> getClientCards(@PathVariable("id") Long id);
+    ResponseEntity<List<CardResponse>> getClientCards(@PathVariable("id") Long id);
+
+    @PostMapping("/{id}/cards")
+    @ResponseStatus(HttpStatus.OK)
+    ResponseEntity<List<CardResponse>> createClientCard(@PathVariable("id") Long id, @RequestBody CardRequest cardRequest);
 }

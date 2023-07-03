@@ -2,17 +2,14 @@ package br.com.acme.adapters.input.web.controller;
 
 import br.com.acme.adapters.input.web.api.ClientApi;
 import br.com.acme.adapters.input.web.api.exception.errors.ClientNotFoundException;
+import br.com.acme.adapters.input.web.api.request.CardRequest;
 import br.com.acme.adapters.input.web.api.request.ClientRequest;
 import br.com.acme.adapters.input.web.api.response.CardResponse;
 import br.com.acme.adapters.input.web.api.response.ClientResponse;
+import br.com.acme.application.domain.entity.CardDomain;
 import br.com.acme.application.domain.entity.ClientDomain;
 import br.com.acme.application.mapper.ConverterDTO;
-import br.com.acme.application.ports.in.ICreateClientDomainUseCase;
-import br.com.acme.application.ports.in.IDeleteClientDomainByIdUseCase;
-import br.com.acme.application.ports.in.IGetClientCardsDomainUseCase;
-import br.com.acme.application.ports.in.IGetClientDomainByIdUseCase;
-import br.com.acme.application.ports.in.IListClientDomainUseCase;
-import br.com.acme.application.ports.in.IPutClientDomainUseCase;
+import br.com.acme.application.ports.in.*;
 import lombok.AllArgsConstructor;
 import org.junit.platform.commons.function.Try;
 import org.springframework.http.HttpStatus;
@@ -30,6 +27,7 @@ public class ClientController implements ClientApi {
     private final IGetClientCardsDomainUseCase iGetClientCardsDomainUseCase;
     private final IDeleteClientDomainByIdUseCase iDeleteClientDomainByIdUseCase;
     private final IPutClientDomainUseCase iPutClientDomainUseCase;
+    private final ICreateClientCardDomainUseCase iCreateClientCardDomainUseCase;
 
     private final ConverterDTO converterDTO;
 
@@ -87,5 +85,13 @@ public class ClientController implements ClientApi {
             throw new ClientNotFoundException(id);
         }
 
+    }
+
+    @Override
+    public ResponseEntity<List<CardResponse>> createClientCard(Long id, CardRequest cardRequest) {
+        var domain = (CardDomain) converterDTO.convertObject(cardRequest, CardDomain.class);
+        var response = (List<CardResponse>) converterDTO
+                        .convertLIstObjects(this.iCreateClientCardDomainUseCase.execute(id, domain), CardResponse.class);
+        return ResponseEntity.ok(response);
     }
 }
