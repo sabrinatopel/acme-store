@@ -1,13 +1,8 @@
 package br.com.acme.adapters.input.web.api.response;
 
-import br.com.acme.adapters.input.web.api.request.CardRequest;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
+import java.math.BigDecimal;
 import java.util.List;
 
 @AllArgsConstructor
@@ -20,6 +15,7 @@ public class ClientResponse {
     private String email;
     private String document;
     private String phone;
+    private BigDecimal income;
     private List<CardResponse> cards;
 
 }

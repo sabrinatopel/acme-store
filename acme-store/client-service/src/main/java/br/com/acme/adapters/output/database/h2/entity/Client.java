@@ -3,6 +3,7 @@ package br.com.acme.adapters.output.database.h2.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Builder
@@ -19,6 +20,7 @@ public class Client {
     private String email;
     private String document;
     private String phone;
+    private BigDecimal income;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "client_id")
     private List<Card> cards;

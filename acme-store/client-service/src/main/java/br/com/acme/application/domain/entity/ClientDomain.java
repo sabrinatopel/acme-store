@@ -2,6 +2,7 @@ package br.com.acme.application.domain.entity;
 import br.com.acme.application.ports.out.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Data
@@ -14,6 +15,7 @@ public class ClientDomain {
     private String email;
     private String document;
     private String phone;
+    private BigDecimal income;
     private List<CardDomain> cards;
 
     public ClientDomain save(ICreateClientDomainRepository iCreateClientDomainRepository){
