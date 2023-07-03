@@ -1,6 +1,7 @@
 package br.com.acme.adapters.input.web.api;
 
 import br.com.acme.adapters.input.web.api.request.ClientRequest;
+import br.com.acme.adapters.input.web.api.response.CardResponse;
 import br.com.acme.adapters.input.web.api.response.ClientResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -33,5 +34,7 @@ public interface ClientApi {
     @ResponseStatus(HttpStatus.CREATED)
     ResponseEntity<ClientResponse> update(@PathVariable("id") Long id, @RequestBody ClientRequest clientRequest);
 
-
+    @GetMapping("/{id}/cards")
+    @ResponseStatus(HttpStatus.OK)
+     ResponseEntity<List<CardResponse>> getClientCards(@PathVariable("id") Long id);
 }

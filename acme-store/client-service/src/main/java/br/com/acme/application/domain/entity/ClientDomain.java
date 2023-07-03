@@ -38,4 +38,8 @@ public class ClientDomain {
         return iPutClientDomainRepository.execute(id, this);
     }
 
+    public List<CardDomain> getCards(IGetClientCardsDomainRepository iGetClientDomainByIdRepository) {
+        return iGetClientDomainByIdRepository.execute(this.id);
+    }
+
 }
