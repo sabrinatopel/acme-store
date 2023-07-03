@@ -88,10 +88,10 @@ public class ClientController implements ClientApi {
     }
 
     @Override
-    public ResponseEntity<List<CardResponse>> createClientCard(Long id, CardRequest cardRequest) {
+    public ResponseEntity<CardResponse> createClientCard(Long id, CardRequest cardRequest) {
         var domain = (CardDomain) converterDTO.convertObject(cardRequest, CardDomain.class);
-        var response = (List<CardResponse>) converterDTO
-                        .convertLIstObjects(this.iCreateClientCardDomainUseCase.execute(id, domain), CardResponse.class);
+        var response = (CardResponse) converterDTO
+                        .convertObject(this.iCreateClientCardDomainUseCase.execute(id, domain), CardResponse.class);
         return ResponseEntity.ok(response);
     }
 }

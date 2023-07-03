@@ -41,5 +41,5 @@ public interface ClientApi {
 
     @PostMapping("/{id}/cards")
     @ResponseStatus(HttpStatus.OK)
-    ResponseEntity<List<CardResponse>> createClientCard(@PathVariable("id") Long id, @RequestBody CardRequest cardRequest);
+    ResponseEntity<CardResponse> createClientCard(@PathVariable("id") Long id, @RequestBody CardRequest cardRequest);
 }

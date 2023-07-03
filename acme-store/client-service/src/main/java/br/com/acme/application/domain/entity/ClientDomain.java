@@ -43,7 +43,7 @@ public class ClientDomain {
     }
     
 
-    public List<CardDomain> createClientCard(ICreateClientCardDomainRepository ICreateClientCardDomainRepository){
+    public CardDomain createClientCard(ICreateClientCardDomainRepository ICreateClientCardDomainRepository){
         return ICreateClientCardDomainRepository.execute(this.id, this.cards.get(0));
     }
 

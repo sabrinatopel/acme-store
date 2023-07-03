@@ -17,7 +17,7 @@ public class CreateClientCardDomainUseCase implements ICreateClientCardDomainUse
     private final ICreateClientCardDomainRepository iCreateClientCardDomainRepository;
 
     @Override
-    public List<CardDomain> execute(Long id, CardDomain cardDomain) {
+    public CardDomain execute(Long id, CardDomain cardDomain) {
         ArrayList<CardDomain> cards = new ArrayList<CardDomain>();
         cards.add(cardDomain);
         return ClientDomain.builder()

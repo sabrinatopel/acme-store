@@ -6,5 +6,5 @@ import br.com.acme.application.domain.entity.CardDomain;
 
 public interface ICreateClientCardDomainRepository {
 
-    List<CardDomain> execute(Long id, CardDomain cardDomain);
+    CardDomain execute(Long id, CardDomain cardDomain);
 }
