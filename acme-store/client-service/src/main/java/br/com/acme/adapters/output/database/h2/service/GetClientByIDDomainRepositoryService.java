@@ -17,10 +17,8 @@ public class GetClientByIDDomainRepositoryService implements IGetClientDomainByI
 
     @Override
     public ClientDomain execute(Long id) {
-        var entity = this.clientRepository.findById(id);
-        if (entity.isEmpty()) {
-            throw new ClientNotFoundException(id);
-        }
+        var entity = this.clientRepository.findById(id)
+                .orElseThrow(() -> new ClientNotFoundException(id));
         return (ClientDomain) converterDTO
                 .convertObject(entity, ClientDomain.class);
     }

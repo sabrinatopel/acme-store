@@ -18,11 +18,9 @@ public class GetClientCardsRespositoryService implements IGetClientCardsDomainRe
     private final ConverterDTO converterDTO;
     @Override
     public List<CardDomain> execute(Long id) {
-        var entity = this.clientRepository.findById(id);
-        if (entity.isEmpty()) {
-            throw new ClientNotFoundException(id);
-        }
+        var entity = this.clientRepository.findById(id)
+                .orElseThrow(() -> new ClientNotFoundException(id));
         return (List<CardDomain>) converterDTO
-                .convertLIstObjects(entity.get().getCards(), CardDomain.class);
+                .convertLIstObjects(entity.getCards(), CardDomain.class);
     }
 }
