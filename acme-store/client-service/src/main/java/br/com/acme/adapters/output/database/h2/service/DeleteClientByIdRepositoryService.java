@@ -3,7 +3,6 @@ package br.com.acme.adapters.output.database.h2.service;
 import br.com.acme.adapters.output.database.h2.repository.ClientRepository;
 import br.com.acme.application.ports.out.IDeleteClientDomainByIdRepository;
 import lombok.AllArgsConstructor;
-import org.hibernate.query.sql.internal.ParameterRecognizerImpl;
 import org.springframework.stereotype.Service;
 
 @Service

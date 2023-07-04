@@ -30,7 +30,6 @@ public interface ClientApi {
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity<?> delete(@PathVariable("id") Long id);
 
-
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     ResponseEntity<ClientResponse> update(@PathVariable("id") Long id, @RequestBody ClientRequest clientRequest);
@@ -42,4 +41,12 @@ public interface ClientApi {
     @PostMapping("/{id}/cards")
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity<CardResponse> createClientCard(@PathVariable("id") Long id, @RequestBody CardRequest cardRequest);
+
+    @DeleteMapping("/{id}/cards/{card_id}")
+    @ResponseStatus(HttpStatus.OK)
+    ResponseEntity<?> deleteClientCard(@PathVariable("id") Long id, @PathVariable("card_id") Long card_id);
+
+    @GetMapping("/{id}/cards/{card_id}")
+    @ResponseStatus(HttpStatus.OK)
+    ResponseEntity<CardResponse> getClientCard(@PathVariable("id") Long id, @PathVariable("card_id") Long card_id);
 }

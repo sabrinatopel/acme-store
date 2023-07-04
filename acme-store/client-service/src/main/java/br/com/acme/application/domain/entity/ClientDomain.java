@@ -43,8 +43,16 @@ public class ClientDomain {
     }
     
 
-    public CardDomain createClientCard(ICreateClientCardDomainRepository ICreateClientCardDomainRepository){
-        return ICreateClientCardDomainRepository.execute(this.id, this.cards.get(0));
+    public CardDomain createClientCard(ICreateClientCardDomainRepository iCreateClientCardDomainRepository){
+        return iCreateClientCardDomainRepository.execute(this.id, this.cards.get(0));
+    }
+
+    public void deleteClientCardById(IDeleteClientCardDomainByIdRepository iDeleteClientCardDomainByIdRepository){
+        iDeleteClientCardDomainByIdRepository.execute(this.id, this.cards.get(0).getId());
+    }
+
+    public CardDomain getClientCardById(IGetClientCardDomainByIdRepository iGetClientCardDomainByIdRepository) {
+        return iGetClientCardDomainByIdRepository.execute(this.id, this.cards.get(0).getId());
     }
 
 }

@@ -28,6 +28,8 @@ public class ClientController implements ClientApi {
     private final IDeleteClientDomainByIdUseCase iDeleteClientDomainByIdUseCase;
     private final IPutClientDomainUseCase iPutClientDomainUseCase;
     private final ICreateClientCardDomainUseCase iCreateClientCardDomainUseCase;
+    private final IDeleteClientCardDomainByIdUseCase iDeleteClientCardDomainByIdUseCase;
+    private final IGetClientCardDomainByIdUseCase iGetClientCardDomainByIdUseCase;
 
     private final ConverterDTO converterDTO;
 
@@ -66,7 +68,6 @@ public class ClientController implements ClientApi {
     public ResponseEntity<ClientResponse> update(Long id, ClientRequest clientRequest) {
         try {
             var domain = (ClientDomain) converterDTO.convertObject(clientRequest, ClientDomain.class);
-            // domain.setId(id);
             var response = this.iPutClientDomainUseCase.execute(id, domain);
             return ResponseEntity.ok((ClientResponse) converterDTO.convertObject(response, ClientResponse.class));
         } catch (ClientNotFoundException e) {
@@ -93,5 +94,18 @@ public class ClientController implements ClientApi {
         var response = (CardResponse) converterDTO
                         .convertObject(this.iCreateClientCardDomainUseCase.execute(id, domain), CardResponse.class);
         return ResponseEntity.ok(response);
+    }
+
+    @Override
+    public ResponseEntity<?> deleteClientCard(Long id, Long card_id){
+        iDeleteClientCardDomainByIdUseCase.execute(id, card_id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @Override
+    public ResponseEntity<CardResponse> getClientCard(Long id, Long card_id){
+        var response = iGetClientCardDomainByIdUseCase.execute(id, card_id);
+        return ResponseEntity.ok((CardResponse) converterDTO
+                    .convertObject(response, CardResponse.class));
     }
 }
