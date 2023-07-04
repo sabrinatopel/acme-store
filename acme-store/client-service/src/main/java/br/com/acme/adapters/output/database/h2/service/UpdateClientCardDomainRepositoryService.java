@@ -29,22 +29,29 @@ public class UpdateClientCardDomainRepositoryService implements IUpdateClientCar
                 .orElseThrow(() -> new ClientNotFoundException(id));
 
         List<Card> cards = entity.getCards();
-        for (Card card : cards) {
-            if (card.getId().equals(card_id)) {
-                card.setCard_limit(cardDomain.getCard_limit());
-                card.setIncome(cardDomain.getIncome());
-                card.setNumber(cardDomain.getNumber());
-                card.setFlag(cardDomain.getFlag());
-                break;
-            }
+        Optional<Card> optionalCard = cards.stream()
+                .filter(card -> card.getId().equals(card_id))
+                .findFirst();
+
+        if (optionalCard.isPresent()) {
+            Card card = optionalCard.get();
+            card.setCard_limit(cardDomain.getCard_limit());
+            card.setIncome(cardDomain.getIncome());
+            card.setNumber(cardDomain.getNumber());
+            card.setFlag(cardDomain.getFlag());
+        } else {
+            throw new ClientCardNotFoundException(card_id);
         }
+
         entity.setCards(cards);
         var savedEntity = this.clientRepository.save(entity);
 
-        var card = savedEntity.getCards().stream()
-                .filter(c -> c.getId().equals(card_id))
+        Card updatedCard = savedEntity.getCards().stream()
+                .filter(card -> card.getId().equals(card_id))
                 .findFirst()
                 .orElseThrow(() -> new ClientCardNotFoundException(card_id));
-        return (CardDomain) converterDTO.convertObject(card, CardDomain.class);
+
+        return (CardDomain) converterDTO.convertObject(updatedCard, CardDomain.class);
     }
+
 }
