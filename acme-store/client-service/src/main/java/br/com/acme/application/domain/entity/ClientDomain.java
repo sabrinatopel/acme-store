@@ -1,5 +1,4 @@
 package br.com.acme.application.domain.entity;
-import br.com.acme.adapters.output.database.h2.entity.Card;
 import br.com.acme.application.ports.out.*;
 import lombok.*;
 
@@ -19,11 +18,11 @@ public class ClientDomain {
     private BigDecimal income;
     private List<CardDomain> cards;
 
-    public ClientDomain save(ICreateClientDomainRepository iCreateClientDomainRepository){
+    public ClientDomain save(ICreateClientDomainRepository iCreateClientDomainRepository) {
         return iCreateClientDomainRepository.execute(this);
     }
 
-    public List<ClientDomain> list(IListClientDomainRepository iListClientDomainRepository){
+    public List<ClientDomain> list(IListClientDomainRepository iListClientDomainRepository) {
         return iListClientDomainRepository.execute();
     }
 
@@ -35,27 +34,27 @@ public class ClientDomain {
         iDeleteClientDomainByIdRepository.execute(this.id);
     }
 
-    public ClientDomain update(Long id, IPutClientDomainRepository iPutClientDomainRepository ){
+    public ClientDomain update(Long id, IPutClientDomainRepository iPutClientDomainRepository) {
         return iPutClientDomainRepository.execute(id, this);
     }
 
     public List<CardDomain> getCards(IGetClientCardsDomainRepository iGetClientDomainByIdRepository) {
         return iGetClientDomainByIdRepository.execute(this.id);
     }
-    
 
-    public CardDomain createClientCard(ICreateClientCardDomainRepository iCreateClientCardDomainRepository){
+    public CardDomain createClientCard(ICreateClientCardDomainRepository iCreateClientCardDomainRepository) {
         return iCreateClientCardDomainRepository.execute(this.id, this.cards.get(0));
     }
 
-    public void deleteClientCardById(IDeleteClientCardDomainByIdRepository iDeleteClientCardDomainByIdRepository){
+    public void deleteClientCardById(IDeleteClientCardDomainByIdRepository iDeleteClientCardDomainByIdRepository) {
         iDeleteClientCardDomainByIdRepository.execute(this.id, this.cards.get(0).getId());
     }
 
     public CardDomain getClientCardById(IGetClientCardDomainByIdRepository iGetClientCardDomainByIdRepository) {
         return iGetClientCardDomainByIdRepository.execute(this.id, this.cards.get(0).getId());
     }
-    public CardDomain updateClientCard(IUpdateClientCardDomainRepository iUpdateClientCardDomainRepository){
+
+    public CardDomain updateClientCard(IUpdateClientCardDomainRepository iUpdateClientCardDomainRepository) {
         return iUpdateClientCardDomainRepository.execute(this.id, this.cards.get(0).getId(), this.cards.get(0));
     }
 
