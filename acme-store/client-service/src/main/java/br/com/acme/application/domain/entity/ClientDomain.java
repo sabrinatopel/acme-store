@@ -1,4 +1,5 @@
 package br.com.acme.application.domain.entity;
+import br.com.acme.adapters.output.database.h2.entity.Card;
 import br.com.acme.application.ports.out.*;
 import lombok.*;
 
@@ -53,6 +54,9 @@ public class ClientDomain {
 
     public CardDomain getClientCardById(IGetClientCardDomainByIdRepository iGetClientCardDomainByIdRepository) {
         return iGetClientCardDomainByIdRepository.execute(this.id, this.cards.get(0).getId());
+    }
+    public CardDomain updateClientCard(IUpdateClientCardDomainRepository iUpdateClientCardDomainRepository){
+        return iUpdateClientCardDomainRepository.execute(this.id, this.cards.get(0).getId(), this.cards.get(0));
     }
 
 }

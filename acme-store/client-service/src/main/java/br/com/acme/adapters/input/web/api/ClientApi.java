@@ -48,4 +48,8 @@ public interface ClientApi {
     @GetMapping("/{id}/cards/{card_id}")
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity<CardResponse> getClientCard(@PathVariable("id") Long id, @PathVariable("card_id") Long card_id);
+
+    @PutMapping("/{id}/cards/{card_id}")
+    @ResponseStatus(HttpStatus.OK)
+    ResponseEntity<CardResponse> updateClientCard(@PathVariable("id") Long id, @PathVariable("card_id") Long card_id, @RequestBody CardRequest cardRequest);
 }

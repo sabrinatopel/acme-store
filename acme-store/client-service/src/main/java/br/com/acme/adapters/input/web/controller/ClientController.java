@@ -28,6 +28,7 @@ public class ClientController implements ClientApi {
     private final ICreateClientCardDomainUseCase iCreateClientCardDomainUseCase;
     private final IDeleteClientCardDomainByIdUseCase iDeleteClientCardDomainByIdUseCase;
     private final IGetClientCardDomainByIdUseCase iGetClientCardDomainByIdUseCase;
+    private final IUpdateClientCardDomainUseCase iUpdateClientCardDomainUseCase;
 
     private final ConverterDTO converterDTO;
 
@@ -76,7 +77,6 @@ public class ClientController implements ClientApi {
     @Override
     public ResponseEntity<List<CardResponse>> getClientCards(Long id) {
         try {
-
             var response = (List<CardResponse>) converterDTO
                     .convertLIstObjects(this.iGetClientCardsDomainUseCase.execute(id), CardResponse.class);
             return ResponseEntity.ok(response);
@@ -90,20 +90,31 @@ public class ClientController implements ClientApi {
     public ResponseEntity<CardResponse> createClientCard(Long id, CardRequest cardRequest) {
         var domain = (CardDomain) converterDTO.convertObject(cardRequest, CardDomain.class);
         var response = (CardResponse) converterDTO
-                        .convertObject(this.iCreateClientCardDomainUseCase.execute(id, domain), CardResponse.class);
+                .convertObject(this.iCreateClientCardDomainUseCase.execute(id, domain), CardResponse.class);
         return ResponseEntity.ok(response);
     }
 
     @Override
-    public ResponseEntity<?> deleteClientCard(Long id, Long card_id){
+    public ResponseEntity<?> deleteClientCard(Long id, Long card_id) {
         iDeleteClientCardDomainByIdUseCase.execute(id, card_id);
         return ResponseEntity.noContent().build();
     }
 
     @Override
-    public ResponseEntity<CardResponse> getClientCard(Long id, Long card_id){
+    public ResponseEntity<CardResponse> getClientCard(Long id, Long card_id) {
         var response = iGetClientCardDomainByIdUseCase.execute(id, card_id);
         return ResponseEntity.ok((CardResponse) converterDTO
-                    .convertObject(response, CardResponse.class));
+                .convertObject(response, CardResponse.class));
+    }
+
+    @Override
+    public ResponseEntity<CardResponse> updateClientCard(Long id, Long card_id, CardRequest cardRequest) {
+        try {
+            var domain = (CardDomain) converterDTO.convertObject(cardRequest, CardDomain.class);
+            var response = this.iUpdateClientCardDomainUseCase.execute(id, card_id, domain);
+            return ResponseEntity.ok((CardResponse) converterDTO.convertObject(response, CardResponse.class));
+        } catch (ClientNotFoundException e) {
+            throw new ClientNotFoundException(id);
+        }
     }
 }
