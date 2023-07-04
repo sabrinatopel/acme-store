@@ -3,11 +3,7 @@ server:
 
 spring:
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/clients
-    username: root
+    url: jdbc:h2:mem:clients
+    username: sa
     password:
-  jpa:
-    hibernate.ddl-auto: update
-    generate-ddl: true
-    show-sql: true
+    driverClassName: org.h2.Driver

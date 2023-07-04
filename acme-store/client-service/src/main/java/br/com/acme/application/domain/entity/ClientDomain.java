@@ -34,7 +34,7 @@ public class ClientDomain {
         iDeleteClientDomainByIdRepository.execute(this.id);
     }
 
-    public ClientDomain update(Long id, IUpdateClientDomainRepository iUpdateClientDomainRepository) {
+    public ClientDomain update(Long id, IPutClientDomainRepository iUpdateClientDomainRepository) {
         return iUpdateClientDomainRepository.execute(id, this);
     }
 
