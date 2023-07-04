@@ -11,8 +11,6 @@ import br.com.acme.application.domain.entity.ClientDomain;
 import br.com.acme.application.mapper.ConverterDTO;
 import br.com.acme.application.ports.in.*;
 import lombok.AllArgsConstructor;
-import org.junit.platform.commons.function.Try;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
