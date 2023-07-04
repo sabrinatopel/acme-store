@@ -18,7 +18,6 @@ public class CreateClientRepositoryService implements ICreateClientDomainReposit
     public ClientDomain execute(ClientDomain clientDomain) {
         var entity = (Client) converterDTO.convertObject(clientDomain, Client.class);
         var domain = (ClientDomain) converterDTO.convertObject(this.clientRepository.save(entity), ClientDomain.class);
-
         return domain;
     }
 }

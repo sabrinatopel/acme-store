@@ -16,10 +16,7 @@ public class DeleteClientCardDomainByIdRepositoryService implements IDeleteClien
     public void execute(Long id, Long card_id) {
        var client = this.clientRepository.findById(id)
         .orElseThrow(() -> new ClientNotFoundException(id));
-       
         var cards = client.getCards();
-
-        
         if (!cards.stream().anyMatch(card -> card.getId().equals(card_id))) {
             throw new ClientCardNotFoundException(card_id);
         }

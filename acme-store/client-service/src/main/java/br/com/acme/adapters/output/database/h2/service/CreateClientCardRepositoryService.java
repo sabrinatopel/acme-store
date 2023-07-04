@@ -1,5 +1,6 @@
 package br.com.acme.adapters.output.database.h2.service;
 
+import br.com.acme.adapters.input.web.api.exception.errors.ClientCardNotFoundException;
 import br.com.acme.adapters.input.web.api.exception.errors.ClientNotFoundException;
 import br.com.acme.adapters.output.database.h2.entity.Card;
 import br.com.acme.adapters.output.database.h2.repository.ClientRepository;
@@ -20,15 +21,10 @@ public class CreateClientCardRepositoryService implements ICreateClientCardDomai
     public CardDomain execute(Long id, CardDomain cardDomain) {
         var entity = this.clientRepository.findById(id)
                 .orElseThrow(() -> new ClientNotFoundException(id));
-
         var card = converterDTO.convertObject(cardDomain, Card.class);
-        var cards = entity.getCards();
-        cards.add((Card) card);
-
-        entity.setCards(cards);
+        entity.getCards().add((Card) card);
         var savedEntity = this.clientRepository.save(entity);
         var lastCard = savedEntity.getCards().get(savedEntity.getCards().size() - 1);
-
         return (CardDomain) converterDTO.convertObject(lastCard, CardDomain.class);
     }
 
